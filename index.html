@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101828">
+  <meta name="description" content="Emilios mobiler Wochenplan für Schule, Aufgaben und Wettkämpfe.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23101828'/%3E%3Cpath d='M18 17h28v32H18z' fill='%23fff'/%3E%3Cpath d='M18 26h28M27 17v32' stroke='%236d5dfc' stroke-width='4'/%3E%3C/svg%3E">
+  <title>Emilios Wochenplan</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div><span class="eyebrow">MEIN PLAN</span><h1>Diese Woche im Blick.</h1></div>
+    <button class="primary" data-open="event">+ Eintragen</button>
+  </header>
+  <main>
+    <section class="summary" aria-label="Wochenübersicht">
+      <article><span>Nächster Termin</span><strong id="next-event">–</strong><small id="next-event-time">Keine Termine</small></article>
+      <article><span>Offene Aufgaben</span><strong id="open-count">0</strong><small id="open-label">Alles erledigt</small></article>
+      <article><span>Schulzeit</span><strong id="school-hours">–</strong><small>laut Stundenplan</small></article>
+    </section>
+
+    <section class="planner">
+      <div class="section-head">
+        <div><span class="eyebrow">WOCHENPLAN</span><h2 id="week-label">Aktuelle Woche</h2></div>
+        <div class="week-controls"><button id="prev-week" aria-label="Vorherige Woche">←</button><button id="today">Heute</button><button id="next-week" aria-label="Nächste Woche">→</button></div>
+      </div>
+      <div class="legend" id="legend"></div>
+      <div class="week-grid" id="week-grid"></div>
+    </section>
+
+    <section class="lower-grid">
+      <article class="panel">
+        <div class="section-head compact"><div><span class="eyebrow">AUFGABEN & TESTS</span><h2>Als Nächstes</h2></div><button class="text-button" data-open="task">+ Aufgabe</button></div>
+        <div id="task-list" class="list"></div>
+      </article>
+      <article class="panel">
+        <div class="section-head compact"><div><span class="eyebrow">FESTE ZEITEN</span><h2>Schulrhythmus</h2></div></div>
+        <div id="school-list" class="school-list"></div>
+        <div class="tutor-note"><strong>Nachhilfe</strong><span>Dienstag 16:00–18:30 · ab 06.10.2026</span></div>
+      </article>
+    </section>
+  </main>
+
+  <dialog id="entry-dialog">
+    <form method="dialog" id="entry-form">
+      <div class="dialog-head"><div><span class="eyebrow">NEUER EINTRAG</span><h2 id="dialog-title">Termin</h2></div><button value="cancel" class="icon-button" aria-label="Schließen">×</button></div>
+      <input type="hidden" id="entry-type" value="event">
+      <label>Datum<input required type="date" id="entry-date"></label>
+      <div id="event-fields">
+        <div class="form-row"><label>Start<input type="time" id="entry-start" value="16:00"></label><label>Ende<input type="time" id="entry-end" value="17:00"></label></div>
+        <label>Name<input type="text" id="entry-name" placeholder="z. B. Training"></label>
+        <label>Kategorie<select id="entry-category"></select></label>
+      </div>
+      <div id="task-fields" hidden>
+        <label>Fach<input type="text" id="entry-subject" placeholder="z. B. Mathe"></label>
+        <label>Aufgabe oder Test<textarea id="entry-task" rows="3" placeholder="Was steht an?"></textarea></label>
+      </div>
+      <button class="primary full" value="default" type="submit">Speichern</button>
+    </form>
+  </dialog>
+  <script src="app.js"></script>
+</body>
+</html>
