@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#101828">
-  <meta name="description" content="Emilios mobiler Wochenplan für Schule, Aufgaben und Wettkämpfe.">
+  <meta name="description" content="Öffentliche Demo eines mobilen Wochenplaners.">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23101828'/%3E%3Cpath d='M18 17h28v32H18z' fill='%23fff'/%3E%3Cpath d='M18 26h28M27 17v32' stroke='%236d5dfc' stroke-width='4'/%3E%3C/svg%3E">
-  <title>Emilios Wochenplan</title>
+  <title>Wochenplan Demo</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -27,26 +27,27 @@
         <div><span class="eyebrow">WOCHENPLAN</span><h2 id="week-label">Aktuelle Woche</h2></div>
         <div class="week-controls"><button id="prev-week" aria-label="Vorherige Woche">←</button><button id="today">Heute</button><button id="next-week" aria-label="Nächste Woche">→</button></div>
       </div>
-      <div class="legend" id="legend"></div>
+      <div class="legend" id="legend" aria-label="Termine nach Kategorie filtern"></div>
       <div class="week-grid" id="week-grid"></div>
     </section>
 
     <section class="lower-grid">
       <article class="panel">
         <div class="section-head compact"><div><span class="eyebrow">AUFGABEN & TESTS</span><h2>Als Nächstes</h2></div><button class="text-button" data-open="task">+ Aufgabe</button></div>
+        <div class="task-filters" aria-label="Aufgaben filtern"><button class="active" data-task-filter="all">Alle</button><button data-task-filter="open">Offen</button><button data-task-filter="done">Erledigt</button></div>
         <div id="task-list" class="list"></div>
       </article>
       <article class="panel">
         <div class="section-head compact"><div><span class="eyebrow">FESTE ZEITEN</span><h2>Schulrhythmus</h2></div></div>
         <div id="school-list" class="school-list"></div>
-        <div class="tutor-note"><strong>Nachhilfe</strong><span>Dienstag 16:00–18:30 · ab 06.10.2026</span></div>
+        <div class="tutor-note"><strong>Lernzeit</strong><span>Dienstag 16:00–17:30 · Beispieldaten</span></div>
       </article>
     </section>
   </main>
 
   <dialog id="entry-dialog">
     <form method="dialog" id="entry-form">
-      <div class="dialog-head"><div><span class="eyebrow">NEUER EINTRAG</span><h2 id="dialog-title">Termin</h2></div><button value="cancel" class="icon-button" aria-label="Schließen">×</button></div>
+      <div class="dialog-head"><div><span class="eyebrow">NEUER EINTRAG</span><h2 id="dialog-title">Termin</h2></div><button type="button" id="close-dialog" class="icon-button" aria-label="Schließen">×</button></div>
       <input type="hidden" id="entry-type" value="event">
       <label>Datum<input required type="date" id="entry-date"></label>
       <div id="event-fields">

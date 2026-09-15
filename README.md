@@ -1,4 +1,4 @@
-# Emilios Wochenplan
+# Wochenplan Demo
 
 Mobiler Wochenplan als installierbare Web-App. Die vorhandenen Termine, Aufgaben und festen Schulzeiten aus `Emilios_Wochenplan_clean_v8(1).xlsx` sind als Startdaten enthalten.
 
